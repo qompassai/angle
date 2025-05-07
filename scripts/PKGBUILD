@@ -1,0 +1,25 @@
+# ~/.GH/Qompass/angle/scripts/PKGBUILD
+# ------------------------------------
+# Copyright (C) 2025 Qompass AI, All rights reserved
+
+# Maintainer: Matt Porter <map@qompass.ai>
+pkgname=angle-local
+pkgver=2025.05.03
+pkgrel=1
+pkgdesc="Locally built ANGLE with Vulkan + Wayland support, installed XDG-style"
+arch=('x86_64')
+url="https://chromium.googlesource.com/angle/angle"
+license=('BSD')
+depends=('vulkan-icd-loader' 'wayland' 'libx11')
+makedepends=('python' 'ninja' 'clang' 'git')
+provides=('libEGL.so' 'libGLESv2.so')
+source=("angle-install.sh")
+noextract=()
+install=
+
+package() {
+  mkdir -p "$pkgdir/usr/bin"
+  cp angle-install.sh "$pkgdir/usr/bin/angle-install"
+  chmod +x "$pkgdir/usr/bin/angle-install"
+}
+
